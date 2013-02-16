@@ -35,13 +35,6 @@ namespace Kata.StringCalculator
 
       if (negatives.Any())
       {
-        var wrongNumbers = "";
-
-        foreach (var wrongNumber in negatives)
-        {
-          wrongNumbers += " " + wrongNumber;
-        }
-
         throw new NegativesAreNoteAllowedException(String.Join(",", negatives));
       }
 
