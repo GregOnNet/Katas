@@ -35,10 +35,4 @@ namespace Kata.StringCalculator
       return numbers.Where(n => n >= 0).Sum();
     }
   }
-
-  public class NegativesAreNoteAllowedException : Exception
-  {
-    public NegativesAreNoteAllowedException(string wrongNumbers)
-      : base(String.Format("negatives not allowed {0}", wrongNumbers)) { }
-  }
 }
