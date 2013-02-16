@@ -13,17 +13,7 @@ namespace Kata.StringCalculator
       if (string.IsNullOrEmpty(input))
         return 0;
 
-      if (input.StartsWith("//"))
-      {
-        var delimiter = DelimiterPattern
-                          .Match(input)
-                          .Groups["delimiter"]
-                          .Value;
-
-        input = input
-                  .Replace(delimiter, ",")
-                  .Replace("//,\n", "");
-      }
+      input = ExtractStringOfNumbers(input);
 
       var numbers = input
         .Split(",\n".ToArray())
@@ -35,6 +25,22 @@ namespace Kata.StringCalculator
         throw new NegativesAreNoteAllowedException(String.Join(",", numbers.Where(n => n < 0)));
 
       return numbers.Where(n => n >= 0).Sum();
+    }
+
+    static string ExtractStringOfNumbers(string input)
+    {
+      if (input.StartsWith("//"))
+      {
+        var delimiter = DelimiterPattern
+          .Match(input)
+          .Groups["delimiter"]
+          .Value;
+
+        input = input
+          .Replace(delimiter, ",")
+          .Replace("//,\n", "");
+      }
+      return input;
     }
   }
 }
