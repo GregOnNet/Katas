@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -14,8 +13,8 @@ namespace Kata.StringCalculator
 
       if (input.StartsWith("//"))
       {
-        var regex = new Regex(@"//(?<delimiter>.+)\n");
-        var delimiter = regex
+        var delimiterPattern = new Regex(@"//(?<delimiter>.+)\n");
+        var delimiter = delimiterPattern
                           .Match(input)
                           .Groups["delimiter"]
                           .Value;
