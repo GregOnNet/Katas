@@ -16,10 +16,10 @@ namespace Kata.StringCalculator
       input = ExtractStringOfNumbers(input);
 
       var numbers = input
-        .Split(",\n".ToArray())
-        .Select(int.Parse)
-        .Where(x => x <= 1000)
-        .ToList();
+                      .Split(",\n".ToArray())
+                      .Select(int.Parse)
+                      .Where(x => x <= 1000)
+                      .ToList();
 
       if (numbers.Any(n => n < 0))
         throw new NegativesAreNoteAllowedException(String.Join(",", numbers.Where(n => n < 0)));
@@ -27,7 +27,7 @@ namespace Kata.StringCalculator
       return numbers.Where(n => n >= 0).Sum();
     }
 
-    static string ExtractStringOfNumbers(string input)
+    private static string ExtractStringOfNumbers(string input)
     {
       if (input.StartsWith("//"))
       {
