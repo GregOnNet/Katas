@@ -29,13 +29,9 @@ namespace Kata.StringCalculator
         .Where(x => x <= 1000)
         .ToList();
 
-      var negatives = numbers
-        .Where(n => n < 0)
-        .ToList();
-
-      if (negatives.Any())
+      if (numbers.Any(n => n < 0))
       {
-        throw new NegativesAreNoteAllowedException(String.Join(",", negatives));
+        throw new NegativesAreNoteAllowedException(String.Join(",", numbers.Where(n => n < 0)));
       }
 
       var sum = numbers.Where(n => n >= 0).Sum();
