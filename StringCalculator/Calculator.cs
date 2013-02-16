@@ -16,7 +16,7 @@ namespace Kata.StringCalculator
 
       var numbers = new Extract()
                           .StringOfNumbers(input)
-                          .NumbersOfString()
+                          .NumbersFromString()
                           .Result();
 
       if (numbers.Any(n => n < 0))
@@ -29,7 +29,7 @@ namespace Kata.StringCalculator
     public interface IExtract
     {
       IExtract StringOfNumbers(string input);
-      IExtract NumbersOfString();
+      IExtract NumbersFromString();
       IList<int> Result();
     }
 
@@ -59,7 +59,7 @@ namespace Kata.StringCalculator
         return this;
       }
 
-      public IExtract NumbersOfString()
+      public IExtract NumbersFromString()
       {
         _extractedNumbers = _stringOfNumber
                               .Split(",\n".ToArray())
