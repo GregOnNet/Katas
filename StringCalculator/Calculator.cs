@@ -6,6 +6,8 @@ namespace Kata.StringCalculator
 {
   public static class Calculator
   {
+    private static readonly Regex DelimiterPattern = new Regex(@"//(?<delimiter>.+)\n");
+
     public static int Add(string input)
     {
       if (string.IsNullOrEmpty(input))
@@ -13,8 +15,7 @@ namespace Kata.StringCalculator
 
       if (input.StartsWith("//"))
       {
-        var delimiterPattern = new Regex(@"//(?<delimiter>.+)\n");
-        var delimiter = delimiterPattern
+        var delimiter = DelimiterPattern
                           .Match(input)
                           .Groups["delimiter"]
                           .Value;
