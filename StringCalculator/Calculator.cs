@@ -14,8 +14,8 @@ namespace Kata.StringCalculator
       if (string.IsNullOrEmpty(input))
         return 0;
 
-      input = ExtractStringOfNumbers(input);
-      var numbers = ExtractNumbersOfString(input);
+      var stringOfNumbers = ExtractStringOfNumbers(input);
+      var numbers = ExtractNumbersOfString(stringOfNumbers);
 
       if (numbers.Any(n => n < 0))
         throw new NegativesAreNoteAllowedException(
