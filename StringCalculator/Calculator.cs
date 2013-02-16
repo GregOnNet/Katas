@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -41,13 +42,18 @@ namespace Kata.StringCalculator
           wrongNumbers += " " + wrongNumber;
         }
 
-        throw new ArgumentException(
-          String.Format("negatives not allowed{0}", wrongNumbers));
+        throw new NegativesAreNoteAllowedException(String.Join(",", negatives));
       }
 
       var sum = numbers.Where(n => n >= 0).Sum();
 
       return sum;
     }
+  }
+
+  public class NegativesAreNoteAllowedException : Exception
+  {
+    public NegativesAreNoteAllowedException(string wrongNumbers)
+      : base(String.Format("negatives not allowed {0}", wrongNumbers)) { }
   }
 }
