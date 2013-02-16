@@ -22,25 +22,25 @@ namespace Kata.StringCalculator
                       .ToList();
 
       if (numbers.Any(n => n < 0))
-        throw new NegativesAreNoteAllowedException(String.Join(",", numbers.Where(n => n < 0)));
+        throw new NegativesAreNoteAllowedException(
+                    String.Join(",", numbers.Where(n => n < 0)));
 
       return numbers.Sum();
     }
 
     private static string ExtractStringOfNumbers(string input)
     {
-      if (input.StartsWith("//"))
-      {
-        var delimiter = DelimiterPattern
-          .Match(input)
-          .Groups["delimiter"]
-          .Value;
+      if (!input.StartsWith("//"))
+        return input;
+     
+      var delimiter = DelimiterPattern
+                        .Match(input)
+                        .Groups["delimiter"]
+                        .Value;
 
-        input = input
-          .Replace(delimiter, ",")
-          .Replace("//,\n", "");
-      }
-      return input;
+      return input
+        .Replace(delimiter, ",")
+        .Replace("//,\n", "");
     }
   }
 }
