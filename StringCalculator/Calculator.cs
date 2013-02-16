@@ -48,5 +48,12 @@ namespace Kata.StringCalculator
         .Replace(delimiter, ",")
         .Replace("//,\n", "");
     }
+
+    public interface IExtract
+    {
+      IExtract StringOfNumbers(string input);
+      IExtract NumbersOfString(string input);
+      IList<int> Result();
+    }
   }
 }
