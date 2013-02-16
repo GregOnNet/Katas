@@ -14,39 +14,16 @@ namespace Kata.StringCalculator
       if (string.IsNullOrEmpty(input))
         return 0;
 
-      var stringOfNumbers = ExtractStringOfNumbers(input);
-      var numbers = ExtractNumbersOfString(stringOfNumbers);
+      var numbers = new Extract()
+                          .StringOfNumbers(input)
+                          .NumbersOfString()
+                          .Result();
 
       if (numbers.Any(n => n < 0))
         throw new NegativesAreNoteAllowedException(
                     String.Join(",", numbers.Where(n => n < 0)));
 
       return numbers.Sum();
-    }
-
-    static List<int> ExtractNumbersOfString(string input)
-    {
-      var numbers = input
-        .Split(",\n".ToArray())
-        .Select(int.Parse)
-        .Where(x => x <= 1000)
-        .ToList();
-      return numbers;
-    }
-
-    private static string ExtractStringOfNumbers(string input)
-    {
-      if (!input.StartsWith("//"))
-        return input;
-
-      var delimiter = DelimiterPattern
-                        .Match(input)
-                        .Groups["delimiter"]
-                        .Value;
-
-      return input
-        .Replace(delimiter, ",")
-        .Replace("//,\n", "");
     }
 
     public interface IExtract
@@ -63,17 +40,21 @@ namespace Kata.StringCalculator
 
       public IExtract StringOfNumbers(string input)
       {
-        if (!input.StartsWith("//"))
+        if (input.StartsWith("//"))
+        {
+          var delimiter = DelimiterPattern
+            .Match(input)
+            .Groups["delimiter"]
+            .Value;
+
+          _stringOfNumber = input
+            .Replace(delimiter, ",")
+            .Replace("//,\n", "");
+        }
+        else
+        {
           _stringOfNumber = input;
-
-        var delimiter = DelimiterPattern
-                          .Match(input)
-                          .Groups["delimiter"]
-                          .Value;
-
-        _stringOfNumber = input
-          .Replace(delimiter, ",")
-          .Replace("//,\n", "");
+        }
 
         return this;
       }
