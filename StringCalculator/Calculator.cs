@@ -38,7 +38,7 @@ namespace Kata.StringCalculator
     {
       if (!input.StartsWith("//"))
         return input;
-     
+
       var delimiter = DelimiterPattern
                         .Match(input)
                         .Groups["delimiter"]
@@ -52,8 +52,47 @@ namespace Kata.StringCalculator
     public interface IExtract
     {
       IExtract StringOfNumbers(string input);
-      IExtract NumbersOfString(string input);
+      IExtract NumbersOfString();
       IList<int> Result();
+    }
+
+    public class Extract : IExtract
+    {
+      private string _stringOfNumber;
+      private List<int> _extractedNumbers;
+
+      public IExtract StringOfNumbers(string input)
+      {
+        if (!input.StartsWith("//"))
+          _stringOfNumber = input;
+
+        var delimiter = DelimiterPattern
+                          .Match(input)
+                          .Groups["delimiter"]
+                          .Value;
+
+        _stringOfNumber = input
+          .Replace(delimiter, ",")
+          .Replace("//,\n", "");
+
+        return this;
+      }
+
+      public IExtract NumbersOfString()
+      {
+        _extractedNumbers = _stringOfNumber
+                              .Split(",\n".ToArray())
+                              .Select(int.Parse)
+                              .Where(x => x <= 1000)
+                              .ToList();
+
+        return this;
+      }
+
+      public IList<int> Result()
+      {
+        return _extractedNumbers;
+      }
     }
   }
 }
