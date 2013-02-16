@@ -10,7 +10,7 @@ namespace Kata.StringCalculator
     {
       var input = String.Empty;
 
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.That(result, Is.EqualTo(0));
     }
@@ -20,7 +20,7 @@ namespace Kata.StringCalculator
     {
       var input = "1";
 
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.That(result, Is.EqualTo(1));
     }
@@ -30,7 +30,7 @@ namespace Kata.StringCalculator
     {
       var input = "1,2";
 
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(3, result);
     }
@@ -42,7 +42,7 @@ namespace Kata.StringCalculator
     [TestCase("1,2,3,4,5,6,7,8,9", 45)]
     public void Should_add_numbers(string input, int expectedSum)
     {
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(expectedSum, result);
     }
@@ -50,7 +50,7 @@ namespace Kata.StringCalculator
     [TestCase("1,2,3,4,5,6,7\n8,9", 45)]
     public void Should_add_numbers_when_input_contains_new_lines(string input, int expectedSum)
     {
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(expectedSum, result);
     }
@@ -59,7 +59,7 @@ namespace Kata.StringCalculator
     [ExpectedException]
     public void Should_fail_when_input_has_comma_followed_by_new_line(string input, int expectedSum)
     {
-      StringCalc.Add(input);
+      Calculator.Add(input);
     }
 
     [TestCase("//;\n1;2", 3)]
@@ -67,7 +67,7 @@ namespace Kata.StringCalculator
     [TestCase("//a\n1a2", 3)]
     public void When_a_custom_one_char_separator_is_defined_with_the_input_of_1_and_2_it_should_return_3(string input, int expectedSum)
     {
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(expectedSum, result);
     }
@@ -77,7 +77,7 @@ namespace Kata.StringCalculator
     public void When_a_custom_multichar_separator_is_defined_with_the_input_of_1_and_2_it_should_return_3(string input, int expectedSum)
     {
 
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(expectedSum, result);
     }
@@ -86,14 +86,14 @@ namespace Kata.StringCalculator
     [ExpectedException(ExpectedMessage = "negatives not allowed -1")]
     public void Should_throw_exception_when_negative_numbers_are_passed1(string input)
     {
-      StringCalc.Add(input);
+      Calculator.Add(input);
     }
 
     [TestCase("//;\n1;-2")]
     [ExpectedException(ExpectedMessage = "negatives not allowed -2")]
     public void should_throw_exception_when_negative_numbers_are_passed2(string input)
     {
-      StringCalc.Add(input);
+      Calculator.Add(input);
     }
 
     [TestCase("2,1001", 2)]
@@ -101,7 +101,7 @@ namespace Kata.StringCalculator
     [TestCase("2,1000", 1002)]
     public void When_a_number_is_greater_than_thousand_this_number_should_be_ignored(string input, int expectedSum)
     {
-      var result = StringCalc.Add(input);
+      var result = Calculator.Add(input);
 
       Assert.AreEqual(expectedSum, result);
     }

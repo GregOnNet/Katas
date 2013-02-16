@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Kata.StringCalculator
 {
-  public static class StringCalc
+  public static class Calculator
   {
     public static int Add(string input)
     {
