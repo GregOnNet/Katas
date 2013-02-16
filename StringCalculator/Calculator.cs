@@ -18,7 +18,7 @@ namespace Kata.StringCalculator
                           .Result();
 
       if (numbers.Any(n => n < 0))
-        throw new NegativesAreNoteAllowedException(
+        throw new NegativesAreNotAllowedException(
                     String.Join(",", numbers.Where(n => n < 0)));
 
       return numbers.Sum();

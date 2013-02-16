@@ -2,9 +2,9 @@
 
 namespace Kata.StringCalculator.Exceptions
 {
-  public class NegativesAreNoteAllowedException : Exception
+  public class NegativesAreNotAllowedException : Exception
   {
-    public NegativesAreNoteAllowedException(string wrongNumbers)
+    public NegativesAreNotAllowedException(string wrongNumbers)
       : base(String.Format("negatives not allowed {0}", wrongNumbers)) { }
   }
 }
