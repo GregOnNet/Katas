@@ -15,8 +15,10 @@ namespace Kata.StringCalculator
       if (input.StartsWith("//"))
       {
         var regex = new Regex(@"//(?<delimiter>.+)\n");
-        var delimiterMatch = regex.Match(input);
-        var delimiter = delimiterMatch.Groups["delimiter"].Value;
+        var delimiter = regex
+                          .Match(input)
+                          .Groups["delimiter"]
+                          .Value;
 
         input = input
                   .Replace(delimiter, ",")
