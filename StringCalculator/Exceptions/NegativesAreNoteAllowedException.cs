@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kata.StringCalculator
+namespace Kata.StringCalculator.Exceptions
 {
   public class NegativesAreNoteAllowedException : Exception
   {

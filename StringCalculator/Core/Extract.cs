@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Kata.StringCalculator.Infrastructure;
 
-namespace Kata.StringCalculator
+namespace Kata.StringCalculator.Core
 {
   public class Extract : IExtract
   {

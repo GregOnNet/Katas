@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
-    <Compile Include="Extract.cs" />
+    <Compile Include="Core\Extract.cs" />
     <Compile Include="Infrastructure\IExtract.cs" />
-    <Compile Include="NegativesAreNoteAllowedException.cs" />
+    <Compile Include="Exceptions\NegativesAreNoteAllowedException.cs" />
     <Compile Include="StringCalculatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

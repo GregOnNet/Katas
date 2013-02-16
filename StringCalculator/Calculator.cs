@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using Kata.StringCalculator.Core;
+using Kata.StringCalculator.Exceptions;
 
 namespace Kata.StringCalculator
 {
