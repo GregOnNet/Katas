@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.StringCalculator", "StringCalculator\Kata.StringCalculator.csproj", "{1CF16D95-6772-434C-B66D-2A4A583F9E84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.StringCalculator", "String Calculator\Kata.StringCalculator.csproj", "{1CF16D95-6772-434C-B66D-2A4A583F9E84}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C5EA33C5-DE76-4B05-9117-B89EC51D4562}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C5EA33
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.WordWrap", "Kata.WordWrap\Kata.WordWrap.csproj", "{E8007196-78A9-47DB-B7CB-026CA9D66BA0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.WordWrap", "Word Wrap\Kata.WordWrap.csproj", "{E8007196-78A9-47DB-B7CB-026CA9D66BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
